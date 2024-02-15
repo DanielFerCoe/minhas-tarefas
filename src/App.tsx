@@ -2,11 +2,10 @@ import { useState } from "react"
 import { ClipboardList } from "lucide-react"
 
 import { Header } from "./components/Header"
-import { NewTask } from "./components/NewTask"
 
 import styles from "./app.module.css"
 import { TaskComponent } from "./components/Task"
-import { InfosTasks } from "./components/InfosTasks"
+import { SummaryTasks } from "./components/SummaryTasks"
 
 export interface Task {
   id: string;
@@ -19,7 +18,19 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([
     {
       id: crypto.randomUUID(),
+      description: "tarefa asd a sasrw asdaw awrwsad asdasdaw asdadsa wdawda aadas awwad ad sadawdwadds asds",
+      isChecked: false,
+      createdAt: new Date()
+    },
+    {
+      id: crypto.randomUUID(),
       description: "Uma nova tarefa",
+      isChecked: false,
+      createdAt: new Date()
+    },
+    {
+      id: crypto.randomUUID(),
+      description: "Uma nova tarefa 2",
       isChecked: false,
       createdAt: new Date()
     }
@@ -66,10 +77,19 @@ function App() {
     return prevValue
   }, 0)
 
+  const completedPercentage = 
+    tasks.length > 0 ? Math.round((checkedTasksCounter / tasks.length) * 100) : 0
+
   return (
     <div className="app">
       <Header />
       <main className={styles.wrapper}>
+        <SummaryTasks 
+          completedAmount={checkedTasksCounter}
+          createdAmount={tasks.length}
+          completedPercentage={completedPercentage}
+        />
+        
         <section className={styles.tasksContainer}>
           <div className={styles.tasks}>
             {

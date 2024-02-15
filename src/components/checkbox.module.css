@@ -1,0 +1,60 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  
+  gap: 1rem;
+}
+
+.indicator {  
+  border: 2px solid var(--gray-400);
+  border-radius: 0.5rem;
+  background: var(--gray-500); 
+
+  transition: 0.5s all;
+}
+
+.indicator:hover {
+  border: 2px solid var(--gray-400);
+  background: var(--gray-600); 
+}
+
+.indicator span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+.indicator span svg{
+  color: var(--gray-100)
+}
+
+button[data-state="checked"] .indicator {
+  background-color: var(--purple-600);
+  border: 2px solid var(--purple-500);
+}
+
+button[data-state="checked"] .indicator .emptyIndicator {
+  display: none;
+}
+
+button[data-state="checked"] .indicator:hover {
+  background-color: var(--purple-700);
+  border: 2px solid var(--purple-600);
+}
+
+.title {
+  font-weight: 500;
+  font-size:  1rem;
+  line-height: 1.4;
+  color: var(--gray-100);
+  text-align: justify;
+  transition: 0.5s all;
+}
+
+button[data-state="checked"] .title {
+  text-decoration: line-through;
+  color: var(--gray-300)
+}

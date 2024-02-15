@@ -1,0 +1,19 @@
+.progressBar {
+  height: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+
+  border-radius: 0.75rem;
+  background-color: var(--gray-500);
+
+  transition: 1s all;
+}
+
+.progressBar .progress {
+  height: 0.75rem;
+  margin-top: 1rem;
+
+  border-radius: 0.75rem;
+  background-color: var(--purple-600);
+  transition: 1s all;
+}

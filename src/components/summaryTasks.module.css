@@ -1,29 +1,26 @@
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 1.5rem;
-
-  border-bottom: 2px solid var(--gray-500);
+.headerTasks {
+  margin-top: 2rem;
 }
 
+.headerTasks .wrapperContent {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
 
 .infosTask {
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 0.5rem;
 
   font-size: 0.875rem;
   font-weight: bold;
 }
 
-.infosTask .createdTasks {
-  color: var(--blue);
-}
-
-.infosTask .completedTasks {
-  color: var(--purple);
+.infosTask span {
+  color: var(--purple-500);
 }
 
 .infosTask .counter {

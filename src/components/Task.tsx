@@ -3,6 +3,7 @@ import { Check, Trash2 } from "lucide-react"
 import { Task } from "../App"
 
 import styles from "./task.module.css"
+import { Checkbox } from "./Checkbox"
 
 interface TaskProps {
   task: Task
@@ -10,48 +11,17 @@ interface TaskProps {
   onDeleteTask: (taskId: string) => void
 }
 
-export function TaskComponent({ task, onToggleTask, onDeleteTask }: TaskProps) {
-  function handleToggleTask(){
-    onToggleTask(task.id)
-  }
-
-  function handleDeleteTask(){
-    onDeleteTask(task.id)
-  }
-
-  const styleCheckBox = task.isChecked ? styles.checked : styles.unchecked
-
+export function TaskComponent({ task, onToggleTask }: TaskProps) {
   return (
     <div className={styles.task}>
       <div className={styles.content}>
-        <label 
-          htmlFor="checkbox" 
-          onClick={handleToggleTask}
-        >
-          <input type="checkbox"/>
-          <span className={`${styles.checkbox} ${styleCheckBox}`}>
-            {task.isChecked && <Check size={14}/>}
-          </span>
-        </label>
-
-        <div>
-          <p className={styleCheckBox}>
-            { task.description }
-          </p>
-
-          <p className={styleCheckBox}>
-            Trabalho
-          </p>
-        </div>  
-       
+        <Checkbox 
+          title={task.description} 
+          checked={task.isChecked}
+          id={task.id}
+          onCheckedChange={onToggleTask}
+        />
       </div>
-
-      <button 
-        onClick={handleDeleteTask}
-        title="Deletar tarefa"
-      >
-        <Trash2 size={18}/>
-      </button>
     </div>
   )
 }

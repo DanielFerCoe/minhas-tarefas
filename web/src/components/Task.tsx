@@ -7,7 +7,7 @@ import { Checkbox } from "./Checkbox"
 
 interface TaskProps {
   task: Task
-  onToggleTask: (taskId: string) => void
+  onToggleTask: () => void
   onDeleteTask: (taskId: string) => void
 }
 
@@ -18,8 +18,8 @@ export function TaskComponent({ task, onToggleTask }: TaskProps) {
         <Checkbox 
           title={task.description} 
           checked={task.isChecked}
-          id={task.id}
           onCheckedChange={onToggleTask}
+          hasLineThrough
         />
       </div>
     </div>

@@ -3,6 +3,7 @@
   align-items: center;
   
   gap: 1rem;
+  background-color: transparent;
 }
 
 .indicator {  
@@ -28,7 +29,7 @@
 }
 
 .indicator span svg{
-  color: var(--gray-100)
+  color: var(--gray-100) !important;
 }
 
 button[data-state="checked"] .indicator {
@@ -55,6 +56,9 @@ button[data-state="checked"] .indicator:hover {
 }
 
 button[data-state="checked"] .title {
-  text-decoration: line-through;
   color: var(--gray-300)
+}
+
+button[data-state="checked"] .title.lineThrough {
+  text-decoration: line-through;
 }

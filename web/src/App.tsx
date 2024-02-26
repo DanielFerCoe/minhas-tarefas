@@ -99,7 +99,7 @@ function App() {
                   <TaskComponent 
                     key={task.id} 
                     task={task}
-                    onToggleTask={handleToggleTask}
+                    onToggleTask={() => handleToggleTask(task.id)}
                     onDeleteTask={handleDeleteTask}
                   />
                 ))

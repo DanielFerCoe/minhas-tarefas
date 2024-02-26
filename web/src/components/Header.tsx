@@ -1,9 +1,14 @@
-import { LucideArrowLeft, LucideArrowRight, Plus } from "lucide-react"
-import styles from "./header.module.css"
 import { useState } from "react"
 import { addDays, format, setDefaultOptions, subDays } from "date-fns"
+import * as Dialog from "@radix-ui/react-dialog";
+
+import { LucideArrowLeft, LucideArrowRight, Plus } from "lucide-react"
+import styles from "./header.module.css"
 
 import { ptBR } from "date-fns/locale"
+
+import { DialogContent } from "./Dialog";
+import { NewTaskForm } from "./NewTaskForm";
 
 export function Header() {
   const [daySelected, setDaySelected] = useState(new Date())
@@ -36,24 +41,36 @@ export function Header() {
             <span className={styles.date}> { dateSelectedFormated } </span>
 
             <div className={styles.buttonsContainer}>
-              <button onClick={handlePrevDaySelected}>
+              <button 
+                onClick={handlePrevDaySelected}
+                className={styles.datesControllers}
+              >
                 <LucideArrowLeft size={16}/>
               </button>
-              <button onClick={handleNextDaySelected}>
+              <button 
+                onClick={handleNextDaySelected}
+                className={styles.datesControllers}
+              >
                 <LucideArrowRight size={16}/>
               </button>
             </div>
           </div>
+      
+          <Dialog.Root>
+            <Dialog.Trigger
+              type="button"
+              className={styles.btnAddNewtask}
+            >
+              <Plus size={14} />
+              Novo hábito
+            </Dialog.Trigger>
 
-          <div className={styles.btnAddNewtask}>
-            <button onClick={handlePrevDaySelected}>
-              <Plus size={14}/>
-              <span>Nova tarefa</span>
-            </button>
-          </div>
+            <DialogContent title="Nova tarefa">
+              <NewTaskForm />
+            </DialogContent>
+          </Dialog.Root>
         </div>
       </div>
-
     </header>
   )
 }

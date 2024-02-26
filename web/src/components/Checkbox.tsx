@@ -6,16 +6,22 @@ import styles from './checkbox.module.css'
 interface CheckboxProps {
   checked: boolean
   title: string
-  id: string
-  onCheckedChange: (id: string) => void
+  hasLineThrough?: boolean
+  onCheckedChange: () => void
 }
 
-export function Checkbox({ checked, title, id,  onCheckedChange }: CheckboxProps) {
+export function Checkbox({ 
+  checked, 
+  title,
+  onCheckedChange,
+  hasLineThrough
+}: CheckboxProps) {
+  const textDecoration = hasLineThrough ? styles.lineThrough : ''
+
   return (
     <CheckboxRadix.Root
-      onCheckedChange={() => onCheckedChange(id)}
+      onCheckedChange={onCheckedChange}
       checked={checked}
-      // disabled={isDateinPast}
       className={styles.checkbox}
     >
       <div className={styles.indicator}>
@@ -24,9 +30,8 @@ export function Checkbox({ checked, title, id,  onCheckedChange }: CheckboxProps
           <Check size={14} />
         </CheckboxRadix.Indicator>
       </div>
-
   
-      <p className={styles.title}>
+      <p className={`${styles.title} ${textDecoration}`}>
         { title }
       </p>
     </CheckboxRadix.Root>

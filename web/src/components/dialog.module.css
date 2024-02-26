@@ -1,0 +1,45 @@
+.dialogWrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+}
+
+.dialogContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -15%);
+
+  padding: 2.5rem;
+  background: var(--gray-500);
+  border-radius: 16px;
+  width: 100%;
+}
+
+.dialogTitle {
+  font-size: 1.4rem;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.dialogClose {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+
+  background: transparent;
+  color: var(--gray-100);
+  cursor: pointer;
+}
+
+.dialogClose:hover {
+  color: var(--gray-200);
+}
+
+@media(min-width: 768px){
+  .dialogContent {
+    max-width: 28rem;
+  }
+}

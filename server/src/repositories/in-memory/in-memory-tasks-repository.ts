@@ -7,6 +7,12 @@ export class InMemoryTasksRepository implements TasksRepository {
   public tasks: Task[] = []
   public taskWeekDays: TaskWeekDays[] = []
 
+  async findById(id: string) {
+    const task = this.tasks.find((task) => task.id === id)
+
+    return task || null
+  }
+
   async findByTitle(title: string) {
     const task = this.tasks.find((task) => task.title === title)
 

@@ -1,5 +1,5 @@
-import { ProgressBar } from "./ProgressBar"
-import styles from "./summaryTasks.module.css"
+import { ProgressBar } from "../ProgressBar"
+import { InfosTasks, SummaryTasksContainer } from "./styles"
 
 interface InfosTasksProps {
   completedAmount: number
@@ -13,27 +13,27 @@ export function SummaryTasks({
   completedPercentage 
 }: InfosTasksProps) {
   return (
-    <header className={styles.headerTasks}>
+    <SummaryTasksContainer>
       <ProgressBar progress={completedPercentage}/>
 
-      <div className={styles.wrapperContent}>
-        <div className={styles.infosTask}>
-          <span>
+      <div className="wrapper">
+        <InfosTasks>
+          <span className="label">
             Concluídas
           </span> 
-          <span className={styles.counter}>
+          <span className="counter">
             { `${completedAmount} de ${createdAmount}`}
           </span>
-        </div>
-        <div className={styles.infosTask}>
-          <span>
+        </InfosTasks>
+        <InfosTasks>
+          <span className="label">
             Porcentagem
           </span> 
-          <span className={styles.counter}>
+          <span className="counter">
             { completedPercentage }%
           </span>
-        </div>
+        </InfosTasks>
       </div>
-    </header>
+    </SummaryTasksContainer>
   )
 }

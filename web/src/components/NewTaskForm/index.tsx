@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react";
 import { Check } from "lucide-react";
-import { Checkbox } from "./Checkbox";
+import { Checkbox } from "../Checkbox";
 
-import styles from "./newTaskForm.module.css"
+import { CheckboxsContainer, FormContainer, Submit } from "./styles";
 
 const availableWeekDays = [
   "Domingo",
@@ -44,7 +44,7 @@ export function NewTaskForm() {
   }
 
   return (
-    <form onSubmit={createNewHabit} className={styles.newTaskForm}>
+    <FormContainer onSubmit={createNewHabit}>
       <label htmlFor="title">
         Qual a tarefa?
       </label>
@@ -60,7 +60,7 @@ export function NewTaskForm() {
       <label htmlFor="title">
         Quais dias?
       </label>
-      <div className={styles.wrapperCheckbox}>
+      <CheckboxsContainer>
         {availableWeekDays.map((weekDay, index) => (
           <Checkbox 
             key={weekDay}
@@ -69,14 +69,12 @@ export function NewTaskForm() {
             title={weekDay}
           />
         ))}
-      </div>
+      </CheckboxsContainer>
 
-      <button
-        type="submit"
-      >
+      <Submit>
         <Check size={20} />
         Confirmar
-      </button>
-    </form>
+      </Submit>
+    </FormContainer>
   )
 }

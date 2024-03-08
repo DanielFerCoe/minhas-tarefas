@@ -1,4 +1,4 @@
-import styles from './progressBar.module.css'
+import { ProgressBarContainer } from './styles';
 
 interface ProgressBarProps {
   progress: number;
@@ -6,16 +6,16 @@ interface ProgressBarProps {
 
 export function ProgressBar(props: ProgressBarProps) {
   return (
-    <div className={styles.progressBar}>
+    <ProgressBarContainer>
       <div
-        className={styles.progress}
+        className='progress'
         role="progressbar"
-        aria-label="Progresso de hábitos completados nesse dia"
+        aria-label="Progresso de tarefas completadas nesse dia"
         aria-valuenow={props.progress}
         style={{
           width: `${props.progress}%`,
         }}
-      ></div>
-    </div>
+      />
+    </ProgressBarContainer>
   );
 }

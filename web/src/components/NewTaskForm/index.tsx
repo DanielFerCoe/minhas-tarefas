@@ -1,53 +1,51 @@
-import { FormEvent, useState } from "react";
-import { Check } from "lucide-react";
-import { Checkbox } from "../Checkbox";
+import { FormEvent, useState } from 'react'
+import { Check } from 'lucide-react'
+import { Checkbox } from '../Checkbox'
 
-import { CheckboxsContainer, FormContainer, Submit } from "./styles";
+import { CheckboxsContainer, FormContainer, Submit } from './styles'
 
 const availableWeekDays = [
-  "Domingo",
-  "Segunda-feira",
-  "Terça-feira",
-  "Quarta-feira",
-  "Quinta-feira",
-  "Sexta-feira",
-  "Sábado",
-];
+  'Domingo',
+  'Segunda-feira',
+  'Terça-feira',
+  'Quarta-feira',
+  'Quinta-feira',
+  'Sexta-feira',
+  'Sábado',
+]
 
 export function NewTaskForm() {
-  const [title, setTitle] = useState("");
-  const [weekDays, setWeekDays] = useState<number[]>([]);
+  const [title, setTitle] = useState('')
+  const [weekDays, setWeekDays] = useState<number[]>([])
 
   async function createNewHabit(event: FormEvent) {
-    event.preventDefault();
+    event.preventDefault()
 
     if (!title || weekDays.length === 0) {
-      return;
+      return
     }
 
-    setTitle("");
-    setWeekDays([]);
+    setTitle('')
+    setWeekDays([])
 
-    alert("Hábito criado com sucesso!");
+    alert('Hábito criado com sucesso!')
   }
 
   function handleToggleWeekDay(weekDay: number) {
     if (weekDays.includes(weekDay)) {
-      const weekDaysWithRemovedOne = weekDays.filter((day) => day !== weekDay);
+      const weekDaysWithRemovedOne = weekDays.filter((day) => day !== weekDay)
 
-      setWeekDays(weekDaysWithRemovedOne);
+      setWeekDays(weekDaysWithRemovedOne)
     } else {
-      const weekDaysWithAddedOne = [...weekDays, weekDay];
+      const weekDaysWithAddedOne = [...weekDays, weekDay]
 
-      setWeekDays(weekDaysWithAddedOne);
+      setWeekDays(weekDaysWithAddedOne)
     }
   }
 
   return (
     <FormContainer onSubmit={createNewHabit}>
-      <label htmlFor="title">
-        Qual a tarefa?
-      </label>
+      <label htmlFor="title">Qual a tarefa?</label>
       <input
         type="text"
         id="title"
@@ -57,12 +55,10 @@ export function NewTaskForm() {
         value={title}
       />
 
-      <label htmlFor="title">
-        Quais dias?
-      </label>
+      <label htmlFor="title">Quais dias?</label>
       <CheckboxsContainer>
         {availableWeekDays.map((weekDay, index) => (
-          <Checkbox 
+          <Checkbox
             key={weekDay}
             checked={weekDays.includes(index)}
             onCheckedChange={() => handleToggleWeekDay(index)}

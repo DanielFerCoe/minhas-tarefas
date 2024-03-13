@@ -12,13 +12,13 @@ export const DatePickerContainer = styled.div`
     padding: 0.4rem;
 
     border-radius: 8px;
-    background-color: ${props => props.theme['purple-500']};
-    color: ${props => props.theme['gray-100']};
+    background-color: ${(props) => props.theme['purple-500']};
+    color: ${(props) => props.theme['gray-100']};
     transition: 0.6s background;
     cursor: pointer;
 
-    &:hover{
-      background-color: ${props => props.theme['purple-700']};
+    &:hover {
+      background-color: ${(props) => props.theme['purple-700']};
     }
   }
 `

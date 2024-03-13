@@ -7,12 +7,12 @@ export const defaultTheme = {
   'gray-200': '#D9D9D9',
   'gray-100': '#F2F2F2',
 
-  'danger': '#E25858',
+  danger: '#E25858',
 
   'blue-dark': '#1E6F9F',
-  'blue': '#21B594',
+  blue: '#21B594',
 
-  'yellow': '#B5AF21',
+  yellow: '#B5AF21',
 
   'purple-900': '#3b0764',
   'purple-800': '#4c1d95',

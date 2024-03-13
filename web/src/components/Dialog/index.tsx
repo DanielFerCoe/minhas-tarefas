@@ -1,14 +1,14 @@
-import * as Dialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
+import * as Dialog from '@radix-ui/react-dialog'
+import { X } from 'lucide-react'
 
-import { Close, Content, Overlay, Title } from "./styles";
+import { Close, Content, Overlay, Title } from './styles'
 
 interface DialogComponentProps {
   title: string
   children: React.ReactNode
 }
 
-export function DialogComponent({ title, children }: DialogComponentProps){
+export function DialogComponent({ title, children }: DialogComponentProps) {
   return (
     <Dialog.Portal>
       <Overlay />
@@ -17,11 +17,9 @@ export function DialogComponent({ title, children }: DialogComponentProps){
           <X size={24} aria-label="Fechar" />
         </Close>
 
-        <Title>
-          { title }
-        </Title>
+        <Title>{title}</Title>
 
-        { children }
+        {children}
       </Content>
     </Dialog.Portal>
   )

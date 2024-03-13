@@ -1,13 +1,13 @@
-import { useState } from "react"
-import { format, setDefaultOptions } from "date-fns"
-import { ptBR } from "date-fns/locale"
+import { useState } from 'react'
+import { format, setDefaultOptions } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
-import { DatePicker } from "./components/DatePicker";
-import { AddNewTask } from "./components/AddNewTask";
-import { ContentContainer, HeaderContainer } from "./styles";
+import { DatePicker } from './components/DatePicker'
+import { AddNewTask } from './components/AddNewTask'
+import { ContentContainer, HeaderContainer } from './styles'
 
-setDefaultOptions({ 
-  locale: ptBR
+setDefaultOptions({
+  locale: ptBR,
 })
 
 export function Header() {
@@ -17,23 +17,23 @@ export function Header() {
     setDaySelected(date)
   }
 
-  const weekNameSelected = format(daySelected, "EEEE" )
-  const dateSelectedFormated = format(daySelected, "dd 'de' MMMM 'de' YYY" )
-  
+  const weekNameSelected = format(daySelected, 'EEEE')
+  const dateSelectedFormated = format(daySelected, "dd 'de' MMMM 'de' YYY")
+
   return (
     <HeaderContainer>
-      <div className='wrapper'>
-          <ContentContainer>
-            <span className='title'> { weekNameSelected } </span>
-            <span className='date'> { dateSelectedFormated } </span>
+      <div className="wrapper">
+        <ContentContainer>
+          <span className="title"> {weekNameSelected} </span>
+          <span className="date"> {dateSelectedFormated} </span>
 
-            <DatePicker 
-              daySelected={daySelected} 
-              handleDaySelected={handleDaySelected}
-            />
-          </ContentContainer>
-      
-         <AddNewTask />
+          <DatePicker
+            daySelected={daySelected}
+            handleDaySelected={handleDaySelected}
+          />
+        </ContentContainer>
+
+        <AddNewTask />
       </div>
     </HeaderContainer>
   )

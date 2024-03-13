@@ -16,14 +16,14 @@ export const FormContainer = styled.form`
     padding: 1rem;
     margin-bottom: 2rem;
 
-    background: ${props => props.theme['gray-600']};
-    border: 2px solid ${props => props.theme['gray-400']};
-    color: ${props => props.theme['gray-300']};
+    background: ${(props) => props.theme['gray-600']};
+    border: 2px solid ${(props) => props.theme['gray-400']};
+    color: ${(props) => props.theme['gray-300']};
     border-radius: 8px;
 
     &:focus {
-      border-color: ${props => props.theme['purple-500']};
-      color: ${props => props.theme['gray-100']};
+      border-color: ${(props) => props.theme['purple-500']};
+      color: ${(props) => props.theme['gray-100']};
       offset: 2px;
     }
   }
@@ -46,12 +46,12 @@ export const Submit = styled.button.attrs({ type: 'submit' })`
 
   border-radius: 8px;
   font-weight: 600;
-  background: ${props => props.theme['yellow']};
+  background: ${(props) => props.theme.yellow};
   cursor: pointer;
 
   transition: 0.6s background;
 
   &:hover {
-    background: ${props => props.theme['blue']};
+    background: ${(props) => props.theme.blue};
   }
 `

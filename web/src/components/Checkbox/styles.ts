@@ -1,23 +1,23 @@
 import styled from 'styled-components'
 
 export const CheckboxContainer = styled.div`
-  button[role="checkbox"]{
+  button[role='checkbox'] {
     display: flex;
     align-items: center;
-    
+
     gap: 1rem;
     background-color: transparent;
 
-    .indicator {  
-      border: 2px solid ${props => props.theme['gray-400']};
+    .indicator {
+      border: 2px solid ${(props) => props.theme['gray-400']};
       border-radius: 0.5rem;
-      background: ${props => props.theme['gray-500']};
+      background: ${(props) => props.theme['gray-500']};
 
       transition: 0.5s all;
 
       &:hover {
-        border: 2px solid ${props => props.theme['gray-400']};
-        background: ${props => props.theme['gray-600']}; 
+        border: 2px solid ${(props) => props.theme['gray-400']};
+        background: ${(props) => props.theme['gray-600']};
       }
 
       span {
@@ -28,8 +28,8 @@ export const CheckboxContainer = styled.div`
         height: 1.3rem;
         width: 1.3rem;
 
-        svg{
-          color: ${props => props.theme['gray-100']} !important;
+        svg {
+          color: ${(props) => props.theme['gray-100']} !important;
         }
       }
     }
@@ -38,19 +38,19 @@ export const CheckboxContainer = styled.div`
       font-weight: 500;
       font-size: 1rem;
       line-height: 1.4;
-      color: ${props => props.theme['gray-100']};
+      color: ${(props) => props.theme['gray-100']};
       text-align: justify;
       transition: 0.5s all;
     }
-    
-    &[data-state="checked"] {
+
+    &[data-state='checked'] {
       .indicator {
-        background-color: ${props => props.theme['purple-600']};
-        border: 2px solid ${props => props.theme['purple-500']};
+        background-color: ${(props) => props.theme['purple-600']};
+        border: 2px solid ${(props) => props.theme['purple-500']};
 
         &:hover {
-          background-color: ${props => props.theme['purple-700']};
-          border: 2px solid ${props => props.theme['purple-600']};
+          background-color: ${(props) => props.theme['purple-700']};
+          border: 2px solid ${(props) => props.theme['purple-600']};
         }
       }
 
@@ -59,7 +59,7 @@ export const CheckboxContainer = styled.div`
       }
 
       .title {
-        color: ${props => props.theme['gray-300']}
+        color: ${(props) => props.theme['gray-300']};
       }
 
       .title.lineThrough {

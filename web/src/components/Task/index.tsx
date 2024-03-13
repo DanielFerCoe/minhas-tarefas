@@ -1,7 +1,7 @@
-import { Task } from "../../App"
+import { Task } from '../../App'
 
-import { Checkbox } from "../Checkbox"
-import { TaskContainer } from "./styles"
+import { Checkbox } from '../Checkbox'
+import { TaskContainer } from './styles'
 
 interface TaskProps {
   task: Task
@@ -12,8 +12,8 @@ interface TaskProps {
 export function TaskComponent({ task, onToggleTask }: TaskProps) {
   return (
     <TaskContainer>
-      <Checkbox 
-        title={task.description} 
+      <Checkbox
+        title={task.description}
         checked={task.isChecked}
         onCheckedChange={onToggleTask}
         hasLineThrough

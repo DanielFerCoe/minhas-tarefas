@@ -1,17 +1,15 @@
-import * as Dialog from "@radix-ui/react-dialog";
+import * as Dialog from '@radix-ui/react-dialog'
 
-import { NewTaskForm } from "../../../NewTaskForm";
-import { DialogComponent } from "../../../Dialog";
-import { Plus } from "lucide-react";
-import { AddNewTaskContainer } from "./styles";
+import { NewTaskForm } from '../../../NewTaskForm'
+import { DialogComponent } from '../../../Dialog'
+import { Plus } from 'lucide-react'
+import { AddNewTaskContainer } from './styles'
 
 export function AddNewTask() {
   return (
     <AddNewTaskContainer>
       <Dialog.Root>
-        <Dialog.Trigger
-          type="button"
-        >
+        <Dialog.Trigger type="button">
           <Plus size={14} />
           Novo hábito
         </Dialog.Trigger>

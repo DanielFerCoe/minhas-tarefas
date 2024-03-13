@@ -6,7 +6,7 @@ export const ProgressBarContainer = styled.div`
   margin-top: 1rem;
 
   border-radius: 0.75rem;
-  background-color: ${props => props.theme['gray-500']};
+  background-color: ${(props) => props.theme['gray-500']};
 
   transition: 1s all;
 
@@ -15,7 +15,7 @@ export const ProgressBarContainer = styled.div`
     margin-top: 1rem;
 
     border-radius: 0.75rem;
-    background-color: ${props => props.theme['purple-600']};
+    background-color: ${(props) => props.theme['purple-600']};
     transition: 1s all;
   }
 `

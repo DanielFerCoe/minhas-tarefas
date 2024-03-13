@@ -1,6 +1,6 @@
-import * as CheckboxRadix from "@radix-ui/react-checkbox";
-import { Check } from "lucide-react";
-import { CheckboxContainer } from "./styles";
+import * as CheckboxRadix from '@radix-ui/react-checkbox'
+import { Check } from 'lucide-react'
+import { CheckboxContainer } from './styles'
 
 interface CheckboxProps {
   checked: boolean
@@ -9,27 +9,24 @@ interface CheckboxProps {
   onCheckedChange: () => void
 }
 
-export function Checkbox({ 
-  checked, 
+export function Checkbox({
+  checked,
   title,
   onCheckedChange,
-  hasLineThrough
+  hasLineThrough,
 }: CheckboxProps) {
   return (
     <CheckboxContainer>
-      <CheckboxRadix.Root
-        onCheckedChange={onCheckedChange}
-        checked={checked}
-      >
+      <CheckboxRadix.Root onCheckedChange={onCheckedChange} checked={checked}>
         <div className="indicator">
-          <span className="emptyIndicator"/>
+          <span className="emptyIndicator" />
           <CheckboxRadix.Indicator>
             <Check size={14} />
           </CheckboxRadix.Indicator>
         </div>
-    
+
         <p className={`title ${hasLineThrough ? 'lineThrough' : ''}`}>
-          { title }
+          {title}
         </p>
       </CheckboxRadix.Root>
     </CheckboxContainer>

@@ -2,14 +2,13 @@ import styled, { css } from 'styled-components'
 
 export const HeaderContainer = styled.header`
   height: 12.5rem;
-  background-image: ${(props) => 
+  background-image: ${(props) =>
     css`
       linear-gradient(
         to right, 
         ${props.theme['purple-900']}, 
         ${props.theme['purple-700']})
-    `
-  };
+    `};
 
   .wrapper {
     display: flex;
@@ -26,7 +25,7 @@ export const HeaderContainer = styled.header`
 
 export const ContentContainer = styled.div`
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 
   .title {
     font-size: 3rem;

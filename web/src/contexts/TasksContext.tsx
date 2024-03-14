@@ -1,9 +1,15 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { startOfDay } from 'date-fns'
 
 import { getTasksInDay } from '../services/task/getTasksInDay'
 import { CreateTask, createNewTask } from '../services/task/createNewTask'
 import { toggleTask } from '../services/task/toggleTask'
+
+import { tasksReducer } from '../reducers/cycles/reducer'
+import {
+  refreshTasksAction,
+  toggleTaskAction,
+} from '../reducers/cycles/actions'
 
 import { TasksInDay } from '../models/Task'
 
@@ -21,7 +27,7 @@ interface TasksProviderProps {
 export const TasksContext = createContext({} as TasksContextProps)
 
 export function TasksProvider({ children }: TasksProviderProps) {
-  const [tasksInDay, setTasksInDay] = useState<TasksInDay>({
+  const [tasksInDay, dispatch] = useReducer(tasksReducer, {
     completedTasks: [],
     possibleTasks: [],
   })
@@ -37,7 +43,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
 
     const tasksInDay = await getTasksInDay(date)
 
-    setTasksInDay(tasksInDay)
+    dispatch(refreshTasksAction(tasksInDay))
   }
 
   async function onAddNewTask({ title, weekDays }: CreateTask) {
@@ -50,31 +56,15 @@ export function TasksProvider({ children }: TasksProviderProps) {
       weekDays,
     }
 
-    const task = await createNewTask(newTask)
+    await createNewTask(newTask)
 
-    setTasksInDay((state) => ({
-      ...state,
-      possibleTasks: [task, ...state.possibleTasks],
-    }))
+    fetchTasks()
   }
 
   async function onToggleTask(taskId: string) {
     await toggleTask(taskId)
 
-    const isTaskAlreadyCompleted = tasksInDay?.completedTasks.includes(taskId)
-
-    let completedTasks: string[] = []
-
-    if (isTaskAlreadyCompleted) {
-      completedTasks = tasksInDay.completedTasks.filter((id) => id !== taskId)
-    } else {
-      completedTasks = [...tasksInDay.completedTasks, taskId]
-    }
-
-    setTasksInDay((state) => ({
-      possibleTasks: state.possibleTasks,
-      completedTasks,
-    }))
+    dispatch(toggleTaskAction(taskId))
   }
 
   useEffect(() => {

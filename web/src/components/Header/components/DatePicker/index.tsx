@@ -1,6 +1,6 @@
 import { LucideArrowLeft, LucideArrowRight } from 'lucide-react'
-import { DatePickerContainer } from './styles'
 import { addDays, subDays } from 'date-fns'
+import { DatePickerContainer } from './styles'
 
 interface DatePickerProps {
   daySelected: Date

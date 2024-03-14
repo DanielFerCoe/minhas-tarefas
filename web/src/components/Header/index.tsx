@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { format, setDefaultOptions } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { TasksContext } from '../../contexts/TasksContext'
 
 import { DatePicker } from './components/DatePicker'
 import { AddNewTask } from './components/AddNewTask'
@@ -11,10 +12,12 @@ setDefaultOptions({
 })
 
 export function Header() {
+  const { fetchTasks } = useContext(TasksContext)
   const [daySelected, setDaySelected] = useState(new Date())
 
   function handleDaySelected(date: Date) {
     setDaySelected(date)
+    fetchTasks(date)
   }
 
   const weekNameSelected = format(daySelected, 'EEEE')

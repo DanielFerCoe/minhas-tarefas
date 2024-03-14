@@ -1,17 +1,20 @@
+import { useContext } from 'react'
+import { TasksContext } from '../../contexts/TasksContext'
+
 import { ProgressBar } from '../ProgressBar'
 import { InfosTasks, SummaryTasksContainer } from './styles'
 
-interface InfosTasksProps {
-  completedAmount: number
-  createdAmount: number
-  completedPercentage: number
-}
+export function SummaryTasks() {
+  const { tasksInDay } = useContext(TasksContext)
 
-export function SummaryTasks({
-  completedAmount,
-  createdAmount,
-  completedPercentage,
-}: InfosTasksProps) {
+  const tasksAmount = tasksInDay.possibleTasks.length
+  const checkedTasksAmount = tasksInDay.completedTasks.length
+
+  const completedPercentage =
+    checkedTasksAmount > 0
+      ? Math.round((checkedTasksAmount / tasksAmount) * 100)
+      : 0
+
   return (
     <SummaryTasksContainer>
       <ProgressBar progress={completedPercentage} />
@@ -20,7 +23,7 @@ export function SummaryTasks({
         <InfosTasks>
           <span className="label">Concluídas</span>
           <span className="counter">
-            {`${completedAmount} de ${createdAmount}`}
+            {`${checkedTasksAmount} de ${checkedTasksAmount}`}
           </span>
         </InfosTasks>
         <InfosTasks>

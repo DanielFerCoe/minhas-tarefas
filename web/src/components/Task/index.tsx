@@ -1,21 +1,30 @@
-import { Task } from '../../App'
+import { useContext } from 'react'
+import { TasksContext } from '../../contexts/TasksContext'
 
 import { Checkbox } from '../Checkbox'
 import { TaskContainer } from './styles'
+import { Task as TaskType } from '../../models/Task'
 
 interface TaskProps {
-  task: Task
-  onToggleTask: () => void
+  task: TaskType
   onDeleteTask: (taskId: string) => void
 }
 
-export function TaskComponent({ task, onToggleTask }: TaskProps) {
+export function Task({ task }: TaskProps) {
+  const { tasksInDay, onToggleTask } = useContext(TasksContext)
+
+  const isChecked = tasksInDay.completedTasks.includes(task.id)
+
+  function handleToggleTask() {
+    onToggleTask(task.id)
+  }
+
   return (
     <TaskContainer>
       <Checkbox
-        title={task.description}
-        checked={task.isChecked}
-        onCheckedChange={onToggleTask}
+        title={task.title}
+        checked={isChecked}
+        onCheckedChange={handleToggleTask}
         hasLineThrough
       />
     </TaskContainer>

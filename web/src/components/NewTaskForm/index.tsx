@@ -1,24 +1,17 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import { Check } from 'lucide-react'
+import { TasksContext } from '../../contexts/TasksContext'
+
 import { Checkbox } from '../Checkbox'
-
 import { CheckboxsContainer, FormContainer, Submit } from './styles'
-
-const availableWeekDays = [
-  'Domingo',
-  'Segunda-feira',
-  'Terça-feira',
-  'Quarta-feira',
-  'Quinta-feira',
-  'Sexta-feira',
-  'Sábado',
-]
+import { availableWeekDays } from './availableWeekDays'
 
 export function NewTaskForm() {
+  const { onAddNewTask } = useContext(TasksContext)
   const [title, setTitle] = useState('')
   const [weekDays, setWeekDays] = useState<number[]>([])
 
-  async function createNewHabit(event: FormEvent) {
+  async function createNewTask(event: FormEvent) {
     event.preventDefault()
 
     if (!title || weekDays.length === 0) {
@@ -27,6 +20,11 @@ export function NewTaskForm() {
 
     setTitle('')
     setWeekDays([])
+
+    onAddNewTask({
+      title,
+      weekDays,
+    })
 
     alert('Hábito criado com sucesso!')
   }
@@ -44,7 +42,7 @@ export function NewTaskForm() {
   }
 
   return (
-    <FormContainer onSubmit={createNewHabit}>
+    <FormContainer onSubmit={createNewTask}>
       <label htmlFor="title">Qual a tarefa?</label>
       <input
         type="text"

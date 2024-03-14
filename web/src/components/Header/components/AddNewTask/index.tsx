@@ -1,8 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import { Plus } from 'lucide-react'
 
 import { NewTaskForm } from '../../../NewTaskForm'
 import { DialogComponent } from '../../../Dialog'
-import { Plus } from 'lucide-react'
 import { AddNewTaskContainer } from './styles'
 
 export function AddNewTask() {

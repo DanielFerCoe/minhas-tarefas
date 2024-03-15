@@ -10,10 +10,10 @@ export const Overlay = styled(Dialog.Overlay)`
 `
 
 export const Content = styled(Dialog.Content)`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -15%);
+  transform: translate(-50%, -50%);
 
   padding: 2.5rem;
   background: ${(props) => props.theme['gray-500']};

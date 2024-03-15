@@ -4,6 +4,7 @@ import { CheckboxContainer } from './styles'
 
 interface CheckboxProps {
   checked: boolean
+  disabled?: boolean
   title: string
   hasLineThrough?: boolean
   onCheckedChange: () => void
@@ -11,13 +12,19 @@ interface CheckboxProps {
 
 export function Checkbox({
   checked,
+  disabled,
   title,
   onCheckedChange,
   hasLineThrough,
 }: CheckboxProps) {
   return (
-    <CheckboxContainer>
-      <CheckboxRadix.Root onCheckedChange={onCheckedChange} checked={checked}>
+    <CheckboxRadix.Root
+      onCheckedChange={!disabled ? onCheckedChange : () => {}}
+      checked={checked}
+      disabled={disabled}
+      asChild
+    >
+      <CheckboxContainer>
         <div className="indicator">
           <span className="emptyIndicator" />
           <CheckboxRadix.Indicator>
@@ -28,7 +35,7 @@ export function Checkbox({
         <p className={`title ${hasLineThrough ? 'lineThrough' : ''}`}>
           {title}
         </p>
-      </CheckboxRadix.Root>
-    </CheckboxContainer>
+      </CheckboxContainer>
+    </CheckboxRadix.Root>
   )
 }

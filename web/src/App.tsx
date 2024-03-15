@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { Router } from './Router'
 
-import { TasksProvider } from './contexts/TasksContext'
+import { TasksInDayProvider } from './contexts/TasksInDayContext'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 
@@ -10,9 +10,9 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <TasksProvider>
+        <TasksInDayProvider>
           <Router />
-        </TasksProvider>
+        </TasksInDayProvider>
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>

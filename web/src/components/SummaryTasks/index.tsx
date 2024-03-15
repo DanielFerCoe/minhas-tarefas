@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { TasksContext } from '../../contexts/TasksContext'
+import { TasksInDayContext } from '../../contexts/TasksInDayContext'
 
 import { ProgressBar } from '../ProgressBar'
 import { InfosTasks, SummaryTasksContainer } from './styles'
 
 export function SummaryTasks() {
-  const { tasksInDay } = useContext(TasksContext)
+  const { tasksInDay } = useContext(TasksInDayContext)
 
   const tasksAmount = tasksInDay.possibleTasks.length
   const checkedTasksAmount = tasksInDay.completedTasks.length

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { TasksContext } from '../../contexts/TasksContext'
+import { TasksInDayContext } from '../../contexts/TasksInDayContext'
 import { Header } from '../../components/Header'
 import { SummaryTasks } from '../../components/SummaryTasks'
 import { Task } from '../../components/Task'
@@ -7,7 +7,7 @@ import { EmptyTasks } from './components/EmptyTasks'
 import { ListContainer, TasksPageContainer } from './styles'
 
 export function Tasks() {
-  const { tasksInDay } = useContext(TasksContext)
+  const { tasksInDay } = useContext(TasksInDayContext)
 
   return (
     <TasksPageContainer>

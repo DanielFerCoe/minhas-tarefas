@@ -3,21 +3,21 @@ import { Plus } from 'lucide-react'
 
 import { NewTaskForm } from '../../../NewTaskForm'
 import { DialogComponent } from '../../../Dialog'
-import { AddNewTaskContainer } from './styles'
+import { AddNewTaskButton } from './styles'
 
 export function AddNewTask() {
   return (
-    <AddNewTaskContainer>
-      <Dialog.Root>
-        <Dialog.Trigger type="button">
+    <Dialog.Root>
+      <Dialog.Trigger type="button" asChild>
+        <AddNewTaskButton>
           <Plus size={14} />
-          Novo hábito
-        </Dialog.Trigger>
+          Nova tarefa
+        </AddNewTaskButton>
+      </Dialog.Trigger>
 
-        <DialogComponent title="Nova tarefa">
-          <NewTaskForm />
-        </DialogComponent>
-      </Dialog.Root>
-    </AddNewTaskContainer>
+      <DialogComponent title="Nova tarefa">
+        <NewTaskForm />
+      </DialogComponent>
+    </Dialog.Root>
   )
 }

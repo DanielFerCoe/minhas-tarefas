@@ -1,13 +1,13 @@
 import { FormEvent, useContext, useState } from 'react'
 import { Check } from 'lucide-react'
-import { TasksContext } from '../../contexts/TasksContext'
+import { TasksInDayContext } from '../../contexts/TasksInDayContext'
 
 import { Checkbox } from '../Checkbox'
 import { CheckboxsContainer, FormContainer, Submit } from './styles'
 import { availableWeekDays } from './availableWeekDays'
 
 export function NewTaskForm() {
-  const { onAddNewTask } = useContext(TasksContext)
+  const { onAddNewTask } = useContext(TasksInDayContext)
   const [title, setTitle] = useState('')
   const [weekDays, setWeekDays] = useState<number[]>([])
 

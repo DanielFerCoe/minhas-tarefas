@@ -3,6 +3,8 @@ import { TasksInDay } from '../../models/Task'
 export enum ActionTypes {
   REFRESH_TASKS_IN_DAY = 'REFRESH_TASKS_IN_DAY',
   TOGGLE_TASK = 'TOGGLE_TASK',
+  CHANGE_DAY_SELECTED_TO_NEXT_DAY = 'CHANGE_DAY_SELECTED_TO_NEXT_DAY',
+  CHANGE_DAY_SELECTED_TO_PREV_DAY = 'CHANGE_DAY_SELECTED_TO_PREV_DAY',
 }
 
 export interface ToggleTaskPayload {
@@ -33,5 +35,17 @@ export function refreshTasksAction(tasksInDay: TasksInDay) {
     payload: {
       tasksInDay,
     },
+  }
+}
+
+export function changeDaySelectedToNextDayAction() {
+  return {
+    type: ActionTypes.CHANGE_DAY_SELECTED_TO_NEXT_DAY,
+  }
+}
+
+export function changeDaySelectedToPrevDayAction() {
+  return {
+    type: ActionTypes.CHANGE_DAY_SELECTED_TO_PREV_DAY,
   }
 }

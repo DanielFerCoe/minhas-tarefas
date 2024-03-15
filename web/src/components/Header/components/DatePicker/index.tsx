@@ -1,24 +1,17 @@
+import { useContext } from 'react'
+import { TasksInDayContext } from '../../../../contexts/TasksInDayContext'
 import { LucideArrowLeft, LucideArrowRight } from 'lucide-react'
-import { addDays, subDays } from 'date-fns'
 import { DatePickerContainer } from './styles'
 
-interface DatePickerProps {
-  daySelected: Date
-  handleDaySelected: (date: Date) => void
-}
+export function DatePicker() {
+  const { onChangeDaySelected } = useContext(TasksInDayContext)
 
-export function DatePicker({
-  daySelected,
-  handleDaySelected,
-}: DatePickerProps) {
   function handleNextDaySelected() {
-    const nextDay = addDays(daySelected, 1)
-    handleDaySelected(nextDay)
+    onChangeDaySelected('nextDay')
   }
 
   function handlePrevDaySelected() {
-    const prevDay = subDays(daySelected, 1)
-    handleDaySelected(prevDay)
+    onChangeDaySelected('prevDay')
   }
 
   return (

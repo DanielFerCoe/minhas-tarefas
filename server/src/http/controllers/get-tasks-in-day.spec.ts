@@ -36,10 +36,21 @@ describe('Get tasks in day (e2e)', async () => {
       title: 'Task in monday and thurday',
     })
 
+    const { id: taskForDeleteId } = await tasksRepository.create({
+      taskWeekDays: [3, 4], // wednesday, Thursday,
+      title: 'Task for deleted',
+    })
+
     const { id: taskId } = await tasksRepository.create({
       taskWeekDays: [0, 4], // Sunday, Thursday,
       title: 'Task in sunday and thurday',
     })
+
+    vi.setSystemTime(new Date(2024, 1, 12, 8, 0, 0)) // 12 february 2024 - Monday
+
+    await tasksRepository.delete(taskForDeleteId)
+
+    vi.setSystemTime(new Date(2024, 1, 15, 8, 0, 0)) // 15 february 2024 - Thursday
 
     const today = dayjs().startOf('day').toDate() // Thursday
 
@@ -56,6 +67,8 @@ describe('Get tasks in day (e2e)', async () => {
         date: today,
       })
       .send()
+
+    console.log('[RESPONSE]', response.body.possibleTasks)
 
     expect(response.statusCode).toEqual(200)
 

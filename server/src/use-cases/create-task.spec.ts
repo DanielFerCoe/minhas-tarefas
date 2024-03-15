@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { CreateTaskUseCase } from './create-task'
 
 import { InMemoryTasksRepository } from '@/repositories/in-memory/in-memory-tasks-repository'
-import { TaskAlreadyExistsError } from './errors/TaskAlreadyExistsError'
+import { TaskAlreadyExistsError } from './errors/task-already-exists-error'
 
 let taskRepository: InMemoryTasksRepository
 let sut: CreateTaskUseCase

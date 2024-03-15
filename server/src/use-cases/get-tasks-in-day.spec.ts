@@ -89,4 +89,53 @@ describe('Get Tasks In Day', () => {
 
     expect(possibleTasks).toHaveLength(0)
   })
+
+  it('should be able to list a task that was deleted on a later date', async () => {
+    vi.setSystemTime(new Date(2024, 1, 5, 8, 0, 0)) // 5 february 2024 - monday
+
+    const createTaskUseCase = new CreateTaskUseCase(taskRepository)
+
+    const { task } = await createTaskUseCase.execute({
+      title: 'Create a new task in Sunday And Wednesday',
+      weekDays: [0, 3], // sunday, wednesday
+    })
+
+    await createTaskUseCase.execute({
+      title: 'Create a new task in Monday And Wednesday',
+      weekDays: [1, 3], // monday, wednesday
+    })
+
+    vi.setSystemTime(new Date(2024, 1, 9, 8, 0, 0)) // 9 february 2024 - friday
+    await taskRepository.delete(task.id)
+
+    vi.setSystemTime(new Date(2024, 1, 7, 8, 0, 0)) // 7 february 2024 - wednesday
+
+    const { possibleTasks } = await sut.execute({ date: new Date() })
+
+    expect(possibleTasks).toHaveLength(2)
+  })
+
+  it('should not be able to list a task that was deleted at a previous date', async () => {
+    vi.setSystemTime(new Date(2024, 1, 5, 8, 0, 0)) // 5 february 2024 - monday
+
+    const createTaskUseCase = new CreateTaskUseCase(taskRepository)
+
+    const { task } = await createTaskUseCase.execute({
+      title: 'Create a new task in Sunday And Monday',
+      weekDays: [0, 1], // sunday, monday
+    })
+
+    await createTaskUseCase.execute({
+      title: 'Create a new task in Monday',
+      weekDays: [1], // monday
+    })
+
+    vi.setSystemTime(new Date(2024, 1, 6, 8, 0, 0)) // 6 february 2024 - tuesday
+    await taskRepository.delete(task.id)
+
+    vi.setSystemTime(new Date(2024, 1, 12, 8, 0, 0)) // 12 february 2024 - monday
+    const { possibleTasks } = await sut.execute({ date: new Date() })
+
+    expect(possibleTasks).toHaveLength(1)
+  })
 })

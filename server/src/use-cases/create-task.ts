@@ -1,7 +1,7 @@
 import { Task } from '@/models/Task'
 
 import { TasksRepository } from './../repositories/tasks-repository'
-import { TaskAlreadyExistsError } from './errors/TaskAlreadyExistsError'
+import { TaskAlreadyExistsError } from './errors/task-already-exists-error'
 
 interface CreateTaskUseCaseRequest {
   title: string

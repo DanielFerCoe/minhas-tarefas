@@ -7,6 +7,7 @@ export interface CreateTaskProps {
 
 export interface TasksRepository {
   create(data: CreateTaskProps): Promise<Task>
+  delete(id: string): Promise<void>
   findById(id: string): Promise<Task | null>
   findByTitle(title: string): Promise<Task | null>
   findManyByWeekDayAndCreatedAt(date: Date, weekDay: number): Promise<Task[]>

@@ -11,9 +11,10 @@ datasource db {
 }
 
 model Task {
-  id         String   @id @default(uuid())
+  id         String    @id @default(uuid())
   title      String
-  created_at DateTime @default(now())
+  created_at DateTime  @default(now())
+  deleted_at DateTime?
 
   dayTasks     DayTask[]
   taskWeekDays TaskWeekDays[]

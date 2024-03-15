@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import { env } from '@/env'
 import { ZodError } from 'zod'
-import { TaskAlreadyExistsError } from '@/use-cases/errors/TaskAlreadyExistsError'
+import { TaskAlreadyExistsError } from '@/use-cases/errors/task-already-exists-error'
+import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 
 export function handleErrors(
   err: Error,
@@ -16,6 +17,10 @@ export function handleErrors(
   }
 
   if (err instanceof TaskAlreadyExistsError) {
+    return res.status(400).json({ message: err.message })
+  }
+
+  if (err instanceof ResourceNotFoundError) {
     return res.status(400).json({ message: err.message })
   }
 

@@ -27,7 +27,11 @@ export class InMemoryTasksRepository implements TasksRepository {
     const tasksIds = tasksInWeekDay.map((taskWeekDay) => taskWeekDay.task_id)
 
     const tasksFiltered = this.tasks.filter((task) => {
-      return task.created_at <= date && tasksIds.includes(task.id)
+      return (
+        task.created_at <= date &&
+        tasksIds.includes(task.id) &&
+        (!task.deleted_at || !(task.deleted_at <= date))
+      )
     })
 
     return tasksFiltered || []
@@ -38,6 +42,7 @@ export class InMemoryTasksRepository implements TasksRepository {
       id: randomUUID(),
       title: data.title,
       created_at: new Date(),
+      deleted_at: null,
     }
 
     this.tasks.push(newTask)
@@ -53,5 +58,17 @@ export class InMemoryTasksRepository implements TasksRepository {
     }
 
     return newTask
+  }
+
+  async delete(id: string): Promise<void> {
+    const tasks = this.tasks.map((task) => {
+      if (task.id === id) {
+        task.deleted_at = new Date()
+      }
+
+      return task
+    })
+
+    this.tasks = tasks
   }
 }

@@ -23,6 +23,19 @@ export class PrismaTasksRepository implements TasksRepository {
     return task
   }
 
+  async delete(id: string) {
+    const today = dayjs(new Date()).startOf('day')
+
+    await prisma.task.update({
+      where: {
+        id,
+      },
+      data: {
+        deleted_at: today.toDate(),
+      },
+    })
+  }
+
   async findById(id: string) {
     const task = await prisma.task.findFirst({
       where: {
@@ -49,6 +62,7 @@ export class PrismaTasksRepository implements TasksRepository {
         created_at: {
           lte: date,
         },
+        OR: [{ deleted_at: null }, { deleted_at: { gt: date } }],
         taskWeekDays: {
           some: {
             week_day: weekDay,

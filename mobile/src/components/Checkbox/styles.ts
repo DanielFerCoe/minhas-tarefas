@@ -4,7 +4,6 @@ import { Text } from '../Text'
 
 export const CheckboxContainer = styled.TouchableOpacity`
   flex-direction: row;
-  margin-bottom: 8px;
   align-items: center;
 `
 export const Checkedbox = styled(Animated.View)`
@@ -28,6 +27,7 @@ export const UncheckedBox = styled(Checkedbox)`
 
 interface TaskTitleProps {
   lineThrough?: boolean
+  checked?: boolean
 }
 
 export const TaskTitle = styled(Text)<TaskTitleProps>`
@@ -35,5 +35,5 @@ export const TaskTitle = styled(Text)<TaskTitleProps>`
   margin-left: 12px;
   text-decoration: ${(props) => (props.lineThrough ? 'line-through' : 'none')};
   color: ${(props) =>
-    props.lineThrough ? props.theme['gray-300'] : props.theme['gray-100']};
+    props.checked ? props.theme['gray-300'] : props.theme['gray-100']};
 `

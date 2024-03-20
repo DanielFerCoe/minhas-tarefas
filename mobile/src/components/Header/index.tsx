@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { format, setDefaultOptions } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { useNavigation } from '@react-navigation/native'
 import { TasksInDayContext } from '../../contexts/TasksInDayContext'
 
 import { DatePicker } from './components/DatePicker'
@@ -20,6 +21,8 @@ setDefaultOptions({
 export function Header() {
   const { tasksInDay } = useContext(TasksInDayContext)
 
+  const { navigate } = useNavigation()
+
   const weekNameSelected = format(tasksInDay.daySelected, 'EEEE')
   const dateSelectedFormated = format(
     tasksInDay.daySelected,
@@ -34,7 +37,7 @@ export function Header() {
           <DateDisplay>{dateSelectedFormated}</DateDisplay>
         </Content>
 
-        <AddButton />
+        <AddButton onPress={() => navigate('new')} />
       </Wrapper>
 
       <DatePicker />

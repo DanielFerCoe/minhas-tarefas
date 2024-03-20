@@ -12,10 +12,16 @@ import {
 
 interface Props extends TouchableOpacityProps {
   title: string
+  lineThrough?: boolean
   checked?: boolean
 }
 
-export function Checkbox({ title, checked = false, ...rest }: Props) {
+export function Checkbox({
+  title,
+  checked = false,
+  lineThrough = false,
+  ...rest
+}: Props) {
   return (
     <CheckboxContainer activeOpacity={0.7} {...rest}>
       {checked ? (
@@ -26,7 +32,9 @@ export function Checkbox({ title, checked = false, ...rest }: Props) {
         <UncheckedBox />
       )}
 
-      <TaskTitle lineThrough={checked}>{title}</TaskTitle>
+      <TaskTitle checked={checked} lineThrough={lineThrough && checked}>
+        {title}
+      </TaskTitle>
     </CheckboxContainer>
   )
 }

@@ -1,19 +1,29 @@
 import styled from 'styled-components/native'
 import Constants from 'expo-constants'
+import { Text } from '../Text'
+import { ButtonWithIcon } from '../ButtonWithIcon'
 
 export const HeaderContainer = styled.View`
   padding: ${Constants.statusBarHeight}px 8px;
   background: ${(props) => props.theme['purple-900']};
 `
 
-export const WeekName = styled.Text`
-  color: ${(props) => props.theme['gray-100']};
-  font-size: 34px;
-  font-family: 'InterBold';
+export const Wrapper = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 `
 
-export const DateDisplay = styled.Text`
-  color: ${(props) => props.theme['gray-100']};
+export const Content = styled.View``
+
+export const WeekName = styled(Text)`
+  font-size: 34px;
+`
+
+export const DateDisplay = styled(Text)`
   font-size: 16px;
-  font-family: 'InterRegular';
+`
+
+export const AddButton = styled(ButtonWithIcon).attrs({ icon: 'plus' })`
+  margin-top: 10px;
 `

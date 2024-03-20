@@ -9,6 +9,7 @@ import { Home } from './src/screens/Home'
 import { AppContainer } from './App.styles'
 import { ThemeProvider } from 'styled-components/native'
 import { defaultTheme } from './src/styles/themes/default'
+import { TasksInDayProvider } from './src/contexts/TasksInDayContext'
 
 export default function App() {
   const [fontLoaded] = useFonts({
@@ -22,14 +23,16 @@ export default function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <AppContainer>
-        <Home />
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor="transparent"
-          translucent
-        />
-      </AppContainer>
+      <TasksInDayProvider>
+        <AppContainer>
+          <Home />
+          <StatusBar
+            barStyle="light-content"
+            backgroundColor="transparent"
+            translucent
+          />
+        </AppContainer>
+      </TasksInDayProvider>
     </ThemeProvider>
   )
 }

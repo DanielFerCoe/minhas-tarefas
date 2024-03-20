@@ -1,23 +1,41 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { format, setDefaultOptions } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
-import { DateDisplay, HeaderContainer, WeekName } from './styles'
+import { TasksInDayContext } from '../../contexts/TasksInDayContext'
+
 import { DatePicker } from './components/DatePicker'
+import {
+  AddButton,
+  Content,
+  DateDisplay,
+  HeaderContainer,
+  WeekName,
+  Wrapper,
+} from './styles'
 
 setDefaultOptions({
   locale: ptBR,
 })
 
 export function Header() {
-  const [daySelected, setDaySelected] = useState<Date>(new Date())
+  const { tasksInDay } = useContext(TasksInDayContext)
 
-  const weekNameSelected = format(daySelected, 'EEEE')
-  const dateSelectedFormated = format(daySelected, "dd 'de' MMMM 'de' yyy")
+  const weekNameSelected = format(tasksInDay.daySelected, 'EEEE')
+  const dateSelectedFormated = format(
+    tasksInDay.daySelected,
+    "dd 'de' MMMM 'de' yyy",
+  )
 
   return (
     <HeaderContainer>
-      <WeekName>{weekNameSelected}</WeekName>
-      <DateDisplay>{dateSelectedFormated}</DateDisplay>
+      <Wrapper>
+        <Content>
+          <WeekName bold>{weekNameSelected}</WeekName>
+          <DateDisplay>{dateSelectedFormated}</DateDisplay>
+        </Content>
+
+        <AddButton />
+      </Wrapper>
 
       <DatePicker />
     </HeaderContainer>

@@ -4,7 +4,7 @@ export const HomeContainer = styled.View`
   height: 100%;
 `
 
-export const Text = styled.Text`
-  color: ${(props) => props.theme['gray-100']};
-  font-family: 'InterRegular';
+export const Content = styled.View`
+  padding: 16px 8px;
+  flex: 1;
 `

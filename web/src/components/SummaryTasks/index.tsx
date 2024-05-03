@@ -23,7 +23,7 @@ export function SummaryTasks() {
         <InfosTasks>
           <span className="label">Concluídas</span>
           <span className="counter">
-            {`${checkedTasksAmount} de ${checkedTasksAmount}`}
+            {`${checkedTasksAmount} de ${tasksAmount}`}
           </span>
         </InfosTasks>
         <InfosTasks>

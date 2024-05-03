@@ -26,7 +26,7 @@ export function NewTaskForm() {
       weekDays,
     })
 
-    alert('Hábito criado com sucesso!')
+    alert('Tarefa criada com sucesso!')
   }
 
   function handleToggleWeekDay(weekDay: number) {

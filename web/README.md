@@ -28,5 +28,11 @@ npm i
 Iniciar no modo de desenvolvimento
 
 ```
+npm run dev
+```
+
+Fazera build
+
+```
 npm run build
 ```
